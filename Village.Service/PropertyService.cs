@@ -4,21 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Village.Model;
+using Village.Service.Repository;
 
 namespace Village.Service
 {
     public  class PropertyService
     {
-        public House GetAllHouse()
+        public IHouseFakeDb fakeDb { get; set; }
+
+        public PropertyService(IHouseFakeDb _fakeDb) {
+            this.fakeDb = _fakeDb;
+        }
+
+        public List<House> GetAllHouse()
         {
-            var h = new House();
-            return h;
+            return this.fakeDb.GetAllHouse();
         }
 
         public House GetHouseByAddr(int addr)
         {
-            var h = new House();
-            return h;
+            return this.fakeDb.GetHouseById(addr);
         }
     }
 }
