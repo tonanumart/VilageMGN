@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vilage.Fact
+namespace Village.Model
 {
     public class Class1
     {
