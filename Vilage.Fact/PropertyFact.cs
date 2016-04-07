@@ -11,19 +11,6 @@ namespace Vilage.Fact
 {
     public class PropertyFact
     {
-        public class HouseFact
-        {
-            private House h;
-
-            public HouseFact()
-            {
-                h = new House();
-            }
-
-            [Fact]
-            public void GetHouseIsNull()
-            {
-            }
-        }
+        
     }
 }
