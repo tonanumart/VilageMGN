@@ -76,9 +76,6 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Village.Model\Village.Model.csproj">
       <Project>{FD3B7D52-19D9-4913-A748-9F52D1C76516}</Project>
       <Name>Village.Model</Name>
