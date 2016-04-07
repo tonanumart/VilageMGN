@@ -13,13 +13,13 @@ namespace Vilage.Fact
     {
         public class PropertyServiceTest
         {
-            [Fact]
-            public void GetAllHouses()
-            {
-                PropertyService service = new PropertyService();
-                ICollection<House> houses =  service.GetAllHouses();
-                Assert.NotNull(houses);
-            }
+            //[Fact]
+            //public void GetAllHouses()
+            //{
+            //    //PropertyService service = new PropertyService();
+            //    //ICollection<House> houses =  service.GetAllHouses();
+            //    //Assert.NotNull(houses);
+            //}
         }
 
     }
