@@ -72,7 +72,6 @@
     <Compile Include="PropertyFact.cs" />
     <Compile Include="ReceiptFact.cs" />
     <Compile Include="ServiceFact\PropertyServiceFact.cs" />
-    <Compile Include="TestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
