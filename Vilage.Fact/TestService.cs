@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Village.Model.Model;
+using Village.Service.Service;
 using Xunit;
 
 namespace Vilage.Fact
@@ -14,36 +16,11 @@ namespace Vilage.Fact
             [Fact]
             public void GetAllHouses()
             {
-
+                PropertyService service = new PropertyService();
+                ICollection<House> houses =  service.GetAllHouses();
+                Assert.NotNull(houses);
             }
-
-            //[Fact]
-            //public void GetHouse()
-            //{
-
-            //}
-
         }
-
-        //public class InvoiceServiceTest
-        //{
-
-        //    [Fact]
-        //    public void GenerateInvoice()
-        //    {
-
-        //    }
-
-        //}
-
-        //public class ReceiptServiceTest
-        //{
-        //    [Fact]
-        //    public void CreateReceipt()
-        //    {
-
-        //    }
-        //}
 
     }
 }
