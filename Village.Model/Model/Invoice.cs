@@ -7,6 +7,7 @@ namespace Village.Model.Model
     {
         public Invoice()
         {
+
         }
 
         public int OwnerId { get; set; }
