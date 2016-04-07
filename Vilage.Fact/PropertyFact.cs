@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vilage.Fact
 {
-    public class Class1
+    public class PropertyFact
     {
     }
 }
