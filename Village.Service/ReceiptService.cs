@@ -13,7 +13,7 @@ namespace Village.Service
         {
             return new Receipt()
             {
-                InvoiceId = invoiceId
+                //InvoiceId = invoiceId
             };
         }
     }

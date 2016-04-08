@@ -49,6 +49,8 @@ namespace Village.Service.Service
                 InvoiceId = Guid.NewGuid(),
                 OwnerId = ownerId
             };
+            Invoice invoice = this.GenerateInvoice(year, month);
+            //invoice.OwnerId = ownerId;
             return invoice;
         }
 
