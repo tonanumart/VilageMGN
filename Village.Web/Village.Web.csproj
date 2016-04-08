@@ -214,7 +214,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Village.DataAccess\Village.DataAccess.csproj">
-      <Project>{F4E2EF0D-D419-4F72-A106-67E8D6F9AF64}</Project>
+      <Project>{f4e2ef0d-d419-4f72-a106-67e8d6f9af64}</Project>
       <Name>Village.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\Village.Model\Village.Model.csproj">
