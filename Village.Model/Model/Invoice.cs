@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Village.Model.Model
+namespace Village.Model
 {
     public class Invoice
     {
