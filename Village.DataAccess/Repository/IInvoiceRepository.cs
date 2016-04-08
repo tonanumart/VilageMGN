@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Village.Model;
 
-namespace Village.Service.Repository
+namespace Village.DataAccess.Repository
 {
     public interface IInvoiceRepository
     {

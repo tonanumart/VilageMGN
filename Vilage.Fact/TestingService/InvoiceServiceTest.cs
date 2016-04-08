@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Village.DataAccess.Repository;
 using Village.Model;
-using Village.Service.Repository;
 using Village.Service.Service;
 using Xunit;
 
@@ -19,7 +19,7 @@ namespace Vilage.Fact.TestingService
         public void GenerateInvoice()
         {
             Mock<IInvoiceRepository> mock = new Mock<IInvoiceRepository>();
-            Mock<IHouseFakeDb> fakeHouse = new Mock<IHouseFakeDb>();
+            Mock<IPropertyRepository> fakeHouse = new Mock<IPropertyRepository>();
             InvoiceService sut = new InvoiceService(mock.Object, fakeHouse.Object);
             int year = 2005;
             int month = 4;
@@ -35,14 +35,14 @@ namespace Vilage.Fact.TestingService
         public void GenerateInvoices_Equal_2()
         {
             Mock<IInvoiceRepository> mock = new Mock<IInvoiceRepository>();
-            Mock<IHouseFakeDb> fakeHouse = new Mock<IHouseFakeDb>();
+            Mock<IPropertyRepository> fakeHouse = new Mock<IPropertyRepository>();
 
             List<House> listHouse = new List<House>() {
                new House() {
-                    Owner = new Owner()
+                    //Owner = new Owner()
                },
                new House() {
-                    Owner = new Owner()
+                    //Owner = new Owner()
                },
                new House() {
                }

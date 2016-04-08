@@ -12,7 +12,11 @@ namespace Village.Model
         [Key]
         public string HouseNo { get; set; }
         public double AreaSquareWa { get; set; }
-        public virtual Owner Owner { get; set; }
+
         public decimal MonthlyFee { get; set; }
+
+        public virtual ICollection<Owner> Owners { get; set; }
+        public Owner Owner => Owners.OrderByDescending(x=>x.StartDate)
+            .FirstOrDefault();
     }
 }

@@ -11,11 +11,21 @@ namespace Village.Model
     public class Owner
     {
         [Key]
-        [Column(Order = 1)]
-        public virtual House House { get; set; }
+        [Column(Order = 0)]
+        [ForeignKey("House")]
+        public string HouseNo { get; set; }
+
         [Key]
-        [Column(Order = 2)]
+        [Column(Order = 1)]
+        [ForeignKey("Person")]
+        public Guid PersonId { get; set; }
+
+        [Required]
+        public virtual House House { get; set; }
+
+        [Required]
         public virtual Person Person { get; set; }
+
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
     }

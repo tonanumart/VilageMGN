@@ -7,8 +7,8 @@ using Xunit;
 using Should;
 using Village.Model;
 using Moq;
-using Village.Service.Repository;
 using Village.Service;
+using Village.DataAccess.Repository;
 
 namespace Vilage.Fact.ServiceFact
 {
@@ -25,13 +25,28 @@ namespace Vilage.Fact.ServiceFact
             [Fact]
             public void GetHouse_MustCall_HouseMockRepo()
             {
-                Mock<IHouseFakeDb> fakeRepo = new Mock<IHouseFakeDb>();
-                fakeRepo.Setup(fake => fake.GetAllHouse());
+                var h = new List<House>() {
+                    new House
+                    {
+                        HouseNo = "1/1",
+                        AreaSquareWa = 100
+                    }
+                    ,new House
+                    {
+                        HouseNo = "1/2",
+                        AreaSquareWa = 110
+                    }
+                };
+
+                Mock<IPropertyRepository> fakeRepo = new Mock<IPropertyRepository>();
+                fakeRepo.Setup(fake => fake.GetAllHouse()).Returns(() => h);
                 PropertyService sut = new PropertyService(fakeRepo.Object);
-                List<House> house = sut.GetAllHouse();
+
+                IEnumerable<House> houses = sut.GetAllHouse();
+
+                houses.Count().ShouldEqual(2);
                 fakeRepo.Verify(fake => fake.GetAllHouse(), Times.Exactly(1));
             }
-
         }
     }
 }

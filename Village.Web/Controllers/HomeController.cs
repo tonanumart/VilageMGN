@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Village.DataAccess.Repository;
+using Village.Model;
+using Village.Service;
 
 namespace Village.Web.Controllers
 {
     public class HomeController : Controller
-    {
+    { 
+
         public ActionResult Index()
         {
-            return View();
+            IPropertyRepository db = new PropertyRepository();
+            PropertyService propertyservice = new PropertyService(db);
+            var house = propertyservice.GetAllHouse();
+            return View(house);
         }
 
         public ActionResult About()
