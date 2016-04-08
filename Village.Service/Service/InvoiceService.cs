@@ -8,25 +8,47 @@ namespace Village.Service.Service
     public class InvoiceService
     {
         private IInvoiceRepository invoiceRepository;
+        private IHouseFakeDb houseRepository;
+
 
         public InvoiceService() { }
 
-        public InvoiceService(IInvoiceRepository _invoiceRepo)
+        public InvoiceService(IInvoiceRepository _invoiceRepo, IHouseFakeDb _houseRepository)
         {
             this.invoiceRepository = _invoiceRepo;
+            this.houseRepository = _houseRepository;
         }
 
-        public Invoice GenerateInvoice(int year, int month)
+        /// <summary>
+        ///  Create Invoices in this month
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <returns></returns>
+        public List<Invoice> GenerateInvoices(int year, int month)
         {
-            var invoice = new Invoice();
-            invoice.CreateDate = new DateTime(year,month,5);
-            return invoice;
+            IEnumerable<House> houseList = houseRepository.GetAllHouse();
+
+            List<Invoice> invoiceList = new List<Invoice>();
+
+            //houseList.ForEach(House =>
+            //{
+            //    //invoiceList.Ad
+            //});
+
+            //var invoice = GenerateInvoice(year, month,null);
+            return invoiceList;
         }
 
         public Invoice GenerateInvoice(int year, int month, int ownerId)
         {
-            Invoice invoice = this.GenerateInvoice(year, month);
-            invoice.OwnerId = ownerId;
+            Invoice invoice = new Invoice()
+            {
+                CreateDate = DateTime.Now,
+                DueDate = new DateTime(year, month + 1, 5),
+                InvoiceId = Guid.NewGuid(),
+                OwnerId = ownerId
+            };
             return invoice;
         }
 

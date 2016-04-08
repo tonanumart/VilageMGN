@@ -9,7 +9,9 @@ namespace Village.Model
 
         }
 
+        public Guid InvoiceId { get; set; }
         public int OwnerId { get; set; }
         public DateTime CreateDate { get; set; }
+        public DateTime DueDate { get; set; }
     }
 }
