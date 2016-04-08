@@ -44,6 +44,7 @@
     <Compile Include="PropertyService.cs" />
     <Compile Include="ReceiptService.cs" />
     <Compile Include="Repository\IHouseFakeDb.cs" />
+    <Compile Include="Repository\IInvoiceRepository.cs" />
     <Compile Include="Service\InvoiceService.cs" />
   </ItemGroup>
   <ItemGroup>
