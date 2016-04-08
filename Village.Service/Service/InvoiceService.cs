@@ -2,17 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Village.DataAccess.Repository;
 using Village.Model;
-using Village.Service.Repository;
 
 namespace Village.Service.Service
 {
     public class InvoiceService
     {
         private IInvoiceRepository invoiceRepository;
-        private IHouseFakeDb houseRepository;
+        private IPropertyRepository houseRepository;
 
-        public InvoiceService(IInvoiceRepository _invoiceRepo, IHouseFakeDb _houseRepository)
+        public InvoiceService(IInvoiceRepository _invoiceRepo, IPropertyRepository _houseRepository)
         {
             this.invoiceRepository = _invoiceRepo;
             this.houseRepository = _houseRepository;
