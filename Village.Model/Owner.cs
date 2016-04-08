@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace Village.Model
 {
-    public class House
+    public class Owner
     {
-        public int HouseId { get; set; }
-        public string HouseNo { get; set; }
-
     }
 }
