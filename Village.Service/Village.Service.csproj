@@ -42,8 +42,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyService.cs" />
-	<Compile Include="ReceiptService.cs" />
+    <Compile Include="ReceiptService.cs" />
     <Compile Include="Repository\IHouseFakeDb.cs" />
+    <Compile Include="Service\InvoiceService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Village.Model\Village.Model.csproj">

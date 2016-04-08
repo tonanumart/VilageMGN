@@ -1,5 +1,4 @@
 ﻿using System;
-using Village.Model.Partail;
 
 namespace Village.Model.Model
 {

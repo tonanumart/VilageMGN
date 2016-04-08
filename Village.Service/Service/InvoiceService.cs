@@ -1,6 +1,5 @@
 ﻿using System;
 using Village.Model.Model;
-using Village.Model.Partail;
 
 namespace Village.Service.Service
 {
