@@ -29,6 +29,9 @@ namespace Vilage.Fact.TestingService
             Assert.Equal(year, invoice.DueDate.Year);
             Assert.Equal(month+1, invoice.DueDate.Month);
             Assert.Equal(ownerId, invoice.OwnerId);
+            Assert.Equal(year, invoice.CreateDate.Year);
+            Assert.Equal(month, invoice.CreateDate.Month);
+            //Assert.Equal(ownerId, invoice.OwnerId);
         }
 
         //[Fact]
