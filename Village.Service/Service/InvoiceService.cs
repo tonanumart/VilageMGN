@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Village.Model;
 using Village.Service.Repository;
 
@@ -10,9 +12,6 @@ namespace Village.Service.Service
         private IInvoiceRepository invoiceRepository;
         private IHouseFakeDb houseRepository;
 
-
-        public InvoiceService() { }
-
         public InvoiceService(IInvoiceRepository _invoiceRepo, IHouseFakeDb _houseRepository)
         {
             this.invoiceRepository = _invoiceRepo;
@@ -22,35 +21,24 @@ namespace Village.Service.Service
         /// <summary>
         ///  Create Invoices in this month
         /// </summary>
-        /// <param name="year"></param>
-        /// <param name="month"></param>
+        /// <param name="year">Year</param>
+        /// <param name="month">Month</param>
         /// <returns></returns>
         public List<Invoice> GenerateInvoices(int year, int month)
         {
-            IEnumerable<House> houseList = houseRepository.GetAllHouse();
-
-            List<Invoice> invoiceList = new List<Invoice>();
-
-            //houseList.ForEach(House =>
-            //{
-            //    //invoiceList.Ad
-            //});
-
-            //var invoice = GenerateInvoice(year, month,null);
-            return invoiceList;
+            var houseList = houseRepository.GetAllHouse();
+            return houseList
+                .Where(house=>house.Owner != null).Select(house => this.GenerateInvoice(year, month, house.Owner)).ToList();
         }
 
-        public Invoice GenerateInvoice(int year, int month, int ownerId)
+        public Invoice GenerateInvoice(int year, int month, Owner owner)
         {
             Invoice invoice = new Invoice()
             {
                 CreateDate = DateTime.Now,
                 DueDate = new DateTime(year, month + 1, 5),
-                InvoiceId = Guid.NewGuid(),
-                OwnerId = ownerId
+                Owner = owner
             };
-            Invoice invoice = this.GenerateInvoice(year, month);
-            //invoice.OwnerId = ownerId;
             return invoice;
         }
 

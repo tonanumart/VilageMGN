@@ -16,32 +16,46 @@ namespace Vilage.Fact.TestingService
 
 
         [Fact]
-        public void GenerateInvoiceWithOwnerId()
+        public void GenerateInvoice()
         {
             Mock<IInvoiceRepository> mock = new Mock<IInvoiceRepository>();
             Mock<IHouseFakeDb> fakeHouse = new Mock<IHouseFakeDb>();
             InvoiceService sut = new InvoiceService(mock.Object, fakeHouse.Object);
             int year = 2005;
             int month = 4;
-            string temp = string.Empty;
-            int ownerId = 99; 
-            Invoice invoice = sut.GenerateInvoice(year, month, ownerId);
+            var owner = new Owner();
+            Invoice invoice = sut.GenerateInvoice(year, month, owner);
             Assert.Equal(year, invoice.DueDate.Year);
             Assert.Equal(month+1, invoice.DueDate.Month);
-            Assert.Equal(ownerId, invoice.OwnerId);
-            Assert.Equal(year, invoice.CreateDate.Year);
-            Assert.Equal(month, invoice.CreateDate.Month);
+            Assert.Same(owner, invoice.Owner);
             //Assert.Equal(ownerId, invoice.OwnerId);
         }
 
-        //[Fact]
-        //public void GenerateInvoices()
-        //{
-        //    InvoiceService sut = new InvoiceService();
-        //    int year = 2005;
-        //    int month = 3;
-        //    List<Invoice> invoiceList = sut.GenerateInvoices(year, month);
-        //    Assert.NotNull(invoiceList);
-        //}
+        [Fact]
+        public void GenerateInvoices_Equal_2()
+        {
+            Mock<IInvoiceRepository> mock = new Mock<IInvoiceRepository>();
+            Mock<IHouseFakeDb> fakeHouse = new Mock<IHouseFakeDb>();
+
+            List<House> listHouse = new List<House>() {
+               new House() {
+                    Owner = new Owner()
+               },
+               new House() {
+                    Owner = new Owner()
+               },
+               new House() {
+               }
+            };
+
+            fakeHouse.Setup(fakeRepo => fakeRepo.GetAllHouse()).Returns(listHouse);
+            InvoiceService sut = new InvoiceService(mock.Object, fakeHouse.Object);
+            int year = 2005;
+            int month = 3;
+            List<Invoice> invoiceList = sut.GenerateInvoices(year, month);
+            fakeHouse.Verify(repo => repo.GetAllHouse(), Times.Once);
+            Assert.NotNull(invoiceList);
+            Assert.Equal(2, invoiceList.Count);
+        }
     }
 }
