@@ -26,7 +26,7 @@ namespace Village.Service.Service
         public Invoice GenerateInvoice(int year, int month, int ownerId)
         {
             Invoice invoice = this.GenerateInvoice(year, month);
-            invoice.OwnerId = ownerId;
+            //invoice.OwnerId = ownerId;
             return invoice;
         }
 
